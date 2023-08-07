@@ -1,0 +1,39 @@
+---
+import siteInfo from "~/data/site-info.js"
+import ChevronIcon from "~/icons/ChevronIcon.jsx"
+import LayersIcon from "~/icons/LayersIcon.jsx"
+import SocialLinks from "./SocialLinks.astro"
+const socialLinks = siteInfo.socialLinks.filter((link) => !link.footerOnly)
+---
+
+<nav
+	aria-label="Primary"
+	class="heading-3 flex flex-col divide-y divide-astro-gray-500 pb-12 text-left [&>*]:p-6"
+>
+	<a href="https://docs.shopconna.com/" class="link"> Docs</a>
+	<a href="/toolkits/" rel="prefetch" class="link"> Toolkits</a>
+	<details class="group">
+		<summary class="accordion link flex cursor-pointer list-none items-center justify-between">
+			Resources
+			<ChevronIcon class="inline-block rotate-0 transition-transform group-open:-rotate-180" />
+		</summary>
+		<div class="mt-4 flex flex-col gap-4 text-2xl font-light">
+			<!-- <a href="/Showcase/" rel="prefetch" class="link flex items-center gap-4">
+				<PaletteIcon /> Showcase
+			</a> -->
+			<a href="/interaction-tools/" rel="prefetch" class="link flex items-center gap-4">
+				<LayersIcon /> Interactions
+			</a>
+			<!-- <a				href="/videos"				class="link flex items-center gap-4">
+				<LayersIcon class="h-4 w-4" />  Videos
+
+			</a> -->
+		</div>
+	</details>
+	<a href="/about/" rel="prefetch" class="link"> About</a>
+	<a href="/blog/" rel="prefetch" class="link"> Blog</a>
+	<div class="flex flex-col gap-6">
+		<SocialLinks links={socialLinks} />
+		<a href="https://docs.shopconna.com/" class="button button-primary"> Get Started</a>
+	</div>
+</nav>

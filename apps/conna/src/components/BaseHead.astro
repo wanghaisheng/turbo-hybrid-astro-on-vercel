@@ -1,0 +1,141 @@
+---
+import Inter from "@fontsource/inter/files/inter-latin-variable-wghtOnly-normal.woff2"
+import "@fontsource/inter/variable.css"
+import smartypants from "smartypants"
+import siteInfo from "~/data/site-info"
+import "~/styles/fonts.css"
+import Favicon from "./Favicon.astro"
+import SEO from "./SEO.astro"
+import { GoogleAnalytics } from "astro-google-analytics"
+// import HuaWeiAnalytics from "./huawei-agc.mjs"
+// import HuaWeiAnalytics from "./huawei-agc.js"
+
+export type Props = {
+	title?: string
+	description?: string
+	image?: { src: string; alt: string }
+	canonicalURL?: URL | null
+	pageType?: "website" | "article"
+}
+
+const twitterHandle = "shopconna"
+
+const {
+	description = siteInfo.description,
+	image = siteInfo.image,
+	canonicalURL = new URL(Astro.request.url, Astro.site),
+	pageType = "website",
+} = Astro.props as Props
+
+const title = [Astro.props.title, siteInfo.name].filter(Boolean).join(" | ")
+const resolvedImage = {
+	src: new URL(image.src, Astro.site).toString(),
+	alt: image.alt,
+}
+---
+
+<!-- Google Tag Manager -->
+<script>
+	;(function (w, d, s, l, i) {
+		w[l] = w[l] || []
+		w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" })
+		var f = d.getElementsByTagName(s)[0],
+			j = d.createElement(s),
+			dl = l != "dataLayer" ? "&l=" + l : ""
+		j.async = true
+		j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl
+		f.parentNode.insertBefore(j, f)
+	})(window, document, "script", "dataLayer", "GTM-54VV455")
+</script>
+<!-- End Google Tag Manager -->
+<script type="text/javascript">
+; (function (c, l, a, r, i, t, y) {
+	c[a] =
+		c[a] ||
+		function () {
+			; (c[a].q = c[a].q || []).push(arguments)
+		}
+	t = l.createElement(r)
+	t.async = 1
+	t.src = "https://www.clarity.ms/tag/" + i
+	y = l.getElementsByTagName(r)[0]
+	y.parentNode.insertBefore(t, y)
+})(window, document, "clarity", "script", "hipjtbqu57")
+</script>
+
+<GoogleAnalytics id="G-37S3WS90LC" />
+<!-- huawei agc https://developer.huawei.com/consumer/cn/service/josp/agc/index.html#/myProject/388421841221558915/97458334310914890?appId=172249065902578551 -->
+<!-- <script src="./huawei-agc.js"></script>
+<script>
+	window.onload = function () {
+		HuaWeiAnalytics()
+	}
+</script> -->
+
+<!-- <HuaWeiAnalytics client:idle /> -->
+
+<!-- relative path to script at `src/scripts/local.js` -->
+<script src="./huawei-config.js"></script>
+<!-- <HuaWeiAnalytics /> -->
+<!-- Fathom - beautiful, simple website analytics -->
+<script src="https://cdn.usefathom.com/script.js" data-site="EZBHTSIG" defer></script>
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<title set:html={smartypants(title, 1)} />
+<meta name="generator" content={Astro.generator} />
+<meta name="viewport" content="width=device-width" />
+<meta name="theme-color" content="#8D46E7" />
+
+<!-- Font preloads from local drive -->
+<!-- <link
+	rel="preload"
+	href="/fonts/Obviously/Obviously Normal/Web/Obviously-Regular.woff2"
+	href="https://fonts-cdn.astro.build/Obviously/Obviously Normal/Web/Obviously-Light.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>
+
+<link
+	rel="preload"
+	href="/fonts/MD IO/Web/MDIO0.5-Regular.woff2"
+	
+	as="font"
+	type="font/woff2"
+	crossorigin
+/> -->
+<link
+	rel="preload"
+	href="https://shopconna.com/fonts/Obviously-Narrow.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>
+
+<link
+	rel="preload"
+	href="https://shopconna.com/fonts/MDIO0.5-Regular.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>
+
+<link rel="preload" href={Inter} as="font" type="font/woff2" crossorigin />
+
+<!-- image preloads -->
+
+<link rel="preload" as="image" href="/assets/noise.webp" />
+<!-- Low Priority Global Metadata -->
+<Favicon />
+<link rel="mask-icon" href="/favicon.svg" color="#8D46E7" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
+<SEO
+	name={siteInfo.name}
+	title={title}
+	description={description}
+	image={resolvedImage}
+	twitter={{ handle: twitterHandle }}
+	og={{ type: pageType }}
+	canonicalURL={canonicalURL}
+/>

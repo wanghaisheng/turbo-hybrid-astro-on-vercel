@@ -1,0 +1,65 @@
+---
+import Benifits from "./Benifits.jsx"
+import LandingSectionText from "./LandingSectionText.astro"
+---
+
+<section class="landing-section relative overflow-hidden">
+	<LandingSectionText>
+		<Fragment slot="title">Benifits you got</Fragment>
+		<Fragment slot="body">
+Transform your brand building process today. Choose ShopConna and unlock a world of possibilities. Let our toolkit empower you to create an unforgettable brand that captivates your audience. Get started now and soar above the competition with ShopConna: Your Copilot for Brand Building Success.
+
+		</Fragment>
+	</LandingSectionText>
+	<div class="relative mt-12 flex w-full items-center">
+		<div class="w-full overflow-hidden">
+			<Benifits client:idle />
+		</div>
+	</div>
+</section>
+
+<style>
+	section::before {
+		position: absolute;
+		content: "";
+		z-index: -1;
+		top: 15%;
+		height: 60%;
+		width: 150%;
+		left: -25%;
+		background: url(/assets/noise.webp) repeat, linear-gradient(247.23deg, #4af2c8 0%, #2f4cb3 100%);
+		background-blend-mode: overlay;
+		mask-image: radial-gradient(rgba(0, 0, 0, 0.8), transparent 70%);
+	}
+
+	@media screen(md) {
+		section::before {
+			left: 25%;
+			top: 20%;
+			height: 80%;
+			mask-image: radial-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6) 30%, transparent 65%);
+		}
+	}
+
+	@media screen(lg) {
+		section::before {
+			top: 15%;
+		}
+	}
+
+	@media screen(2xl) {
+		section::before {
+			width: 100%;
+			left: 25%;
+			height: 80%;
+		}
+	}
+
+	@media (min-width: 1920px) {
+		section::before {
+			width: 67%;
+			left: 35%;
+			height: 90%;
+		}
+	}
+</style>
