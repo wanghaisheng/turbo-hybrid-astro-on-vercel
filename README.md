@@ -1,3 +1,11 @@
+
+https://github.com/oramasearch/orama?tab=readme-ov-file
+
+integrate with vector search
+
+
+
+
 # Welcome to [Turbo Hybrid Astro on Vercel](https://turbo-hybrid-astro-on-vercel.vercel.app/)
 
 Demo site: https://turbo-hybrid-astro-on-vercel.vercel.app/
