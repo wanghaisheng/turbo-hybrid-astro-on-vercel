@@ -3,6 +3,8 @@ https://github.com/oramasearch/orama?tab=readme-ov-file
 
 integrate with vector search
 
+https://github.com/kyr0/vectorstore
+
 
 
 
